@@ -184,3 +184,34 @@ void sort(struct student *p,int n)
     }
 }
 
+
+#include <stdio.h>
+#include <math.h>
+
+#define epsilon 1e-8
+
+int RealGe(double x, double y);
+
+int main()
+{
+    double a, b;
+    scanf("%lg%lg", &a, &b);
+    if (RealGe(a, b))
+    {
+        puts("Yes");
+    }
+    else
+    {
+        puts("No");
+    }
+    return 0;
+}
+/* 请在这里填写答案 */
+/*请编写函数，判断一个实数大于等于另一个实数。*/
+int RealGe(double x, double y)
+{
+    if(x>=y)
+        return 1;
+    else
+        return 0;
+}
