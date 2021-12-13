@@ -73,3 +73,114 @@ int update_score(struct student *p, int n, int num, int course, int score)
     }
     return -1;
 }
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+#define epsilon 1e-8
+
+int RealNe(double x, double y);
+
+int main()
+{
+    double a, b;
+    scanf("%lg%lg", &a, &b);
+    if (RealNe(a, b))
+    {
+        puts("Yes");
+    }
+    else
+    {
+        puts("No");
+    }
+    return 0;
+}
+/* 请在这里填写答案 */
+int RealNe(double x, double y)
+{
+    if (fabs(x-y)<epsilon)
+        return 0;
+    else
+        return 1;
+}
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#define N 30
+struct student                    
+{
+    int num;
+    char name[10];
+    float score[4];
+    float sum;
+};
+void calc(struct student *p,int n);     
+void sort(struct student *p,int n);
+int main()
+{
+    struct student stu[N];
+    int i,j,n;
+    float f;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d%s",&stu[i].num,stu[i].name);
+        for(j=0;j<4;j++)
+        { 
+            scanf("%f",&f);
+            stu[i].score[j]=f;
+        }
+    }
+    calc(stu,n);
+    sort(stu,n);
+    for(i=0;i<n;i++)
+    {
+        printf("%5d%10s",stu[i].num,stu[i].name);
+        printf("%5.1f%5.1f%5.1f%5.1f%7.1f\n",stu[i].score[0],stu[i].score[1],stu[i].score[2], stu[i].score[3],stu[i].sum);
+    }
+    return 0;
+}
+/* 请在这里填写答案 */
+void calc(struct student *p,int n)
+{
+    int i,j;
+    for (i=0; i<=n; i++)
+    {
+        for (j=0; j<4; j++)
+        {
+            p[i].sum+=p[i].score[j];
+        }
+
+    }
+}
+
+void sort(struct student *p,int n)
+{
+    int i,j;
+    for (i=0; i<n-1; i++)
+    {
+        for (j=i+1; j<n; j++)
+        {
+            if (p[i].sum<p[j].sum)
+            {
+                struct student tmp=p[i];
+                p[i]=p[j];
+                p[j]=tmp;
+            }
+        }
+    }
+}
+
