@@ -215,3 +215,42 @@ int RealGe(double x, double y)
     else
         return 0;
 }
+
+
+
+
+
+
+
+#include <stdio.h>
+
+void PrintTrg(char symbol,int height);
+
+int main()
+{
+    int n;
+    char s;
+    scanf("%c %d", &s,&n);
+    PrintTrg(s, n);
+    return 0;
+}
+/* 请在这里填写答案 */
+void PrintTrg(char symbol,int height)
+{
+    int i,j;
+    if(height<=0)
+        printf("Input Error!");
+    for (i=0; i<height; i++)
+    {
+        for(j=0; j<i; j++)
+        {
+            printf(" ");
+        }
+        for (j=i; j<height; j++)
+        {
+            printf("%c",symbol);
+        }
+        if(i<height-1)
+            printf("\n");
+    }
+}
